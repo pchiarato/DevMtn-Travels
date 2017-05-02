@@ -4,12 +4,15 @@ angular.module('devmtnTravel').service('mainSrv', function(){
         image: "../img/US.jpg",
         desc: 'The U.S. is a country of 50 states covering a vast swath of North America. Major Atlantic Coast cities are New York, and capital Washington, DC',
         price: 1345
-    }, {
+    }, 
+                       
+    {
         country: 'France',
         image: "../img/France.jpg",
         desc: "France, encompasses medieval cities, alpine villages and Mediterranean beaches. Paris, its capital, is famed for its fashion houses, classical art museums including the Louvre and monuments like the Eiffel Tower.",
         price: 909
-    },{
+    },
+    {
         country: 'Australia',
         image: "../img/Australia.jpg",
         desc: "Australia is a country and continent surrounded by the Indian and Pacific oceans. Its major cities – Sydney, Brisbane, Melbourne, Perth, Adelaide – are coastal. Its capital, Canberra, is inland. ",
@@ -80,4 +83,38 @@ angular.module('devmtnTravel').service('mainSrv', function(){
 				price: 1722.12
 			},
 		]
+        
+        this.getPackages = function(){
+            return this.packageInfo;
+        }
+        
+        this.getTravel = function(){
+            return this.travelInfo;
+        }
+        
+        this.getPackagesById = function(id){
+            for (var key in this.packageInfo){
+                if (this.packageInfo[key].id == id){
+                    console.log(this.packageInfo[key].country);
+                    return this.packageInfo[key].country;
+                }
+            }
+        }
+        
+        this.getPackagesByCountry = function(country){
+            var arr = [];
+            for (var key in this.packageInfo){
+                if (this.packageInfo[key].country == country){
+                      arr.push(this.packageInfo[key])
+                }
+            }
+//            console.log("returned countries ",arr);
+            return arr;
+          
+            
+        };
+        
+        
+        
+        
 })
